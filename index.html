@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 对 html 做一些初始化设置的 css ，类似的还有 rest.css 等 -->
+  <link rel="stylesheet" href="./Styles/normalize.css">
+  <!-- 引入样式 -->
+	<link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css">
+
+  <style>
+    /* 你需要登录才能继续仿问的布局样式 */
+    .tipslogin {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 52px;
+      background: rgb(238, 238, 238);
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    /* 半闭样式 */
+    .closeSpan {
+      color: rgb(153, 153, 153)
+    }
+    /* 图片 logo 根样式 */
+    .imgDiv {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* 上面的线隐藏 */
+    .mint-cell-wrapper  {
+      background-image: linear-gradient(180deg, #fff, #fff 0%, transparent 0%);
+    }
+   /* 输入框底边框样式 */
+    .mint-cell-wrapper  {
+      <!--border-bottom: 1px solid #ff5000;-->
+    }
+    /* 修改按钮按钮下的默认颜色 */
+    .mint-button::after {
+      background-color: transparent;
+    }
+    /* 操作区域的样式*/
+    .operateDiv {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    /* 输入框边距 */
+    .myinput {
+      margin-top: 30px;
+    }
+    /* 获取短信验证码字体颜色 */
+    .getCode {
+      color:#ff5000;
+      font-size: 17px;
+      border-left:1px solid #b5b5b5;
+      padding-left: 7px;
+    }
+    /* 免费注册根样式 */
+    .registerDiv {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    /* 免费注册字体样式*/
+    .registerDiv span {
+      color: #555;
+    }
+    /* 登录短信验证按钮边距 */
+    .mybutton {
+      margin-top: 20px;
+    }
+    /* 修改默认 butoon 的样式 达到和淘宝登录一样 */
+    .mint-button--default {
+      background: #168de9;
+      border-radius: 0px;
+      color: #fff;
+      height: 64px;
+    }
+    /* 同上 */
+    .mint-button--primary 
+    { 
+      
+      border-radius: 0px;
+      height: 64px;
+      background-color: #fff;
+      color: #168de9
+    }
+    /* 修改默认弹框的样式，达到基本和淘宝的效果一样 */
+    .mint-msgbox{
+      border-radius: 8px;
+      width: 70%
+    }
+    /* 弹出框内容样式 */
+    .mint-msgbox-content {
+      min-height: 50px;
+      font-size: 18px;
+    }
+    /* 弹出内容居中 */
+    .mint-msgbox-message{
+      line-height: 50px;
+    }
+    /* 弹出框确定按钮样式 */
+    .mint-msgbox-btns{
+      height: 60px;
+    }
+    /* 弹出框确定按钮字体 */
+    .mint-msgbox-confirm {
+      color: #f40;
+    }
+    
+    .div_foot {
+    position: absolute;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    width: 100%;
+    bottom: 0;
+
+    }
+ 
+  </style>
+</head>
+<body style="font-family:'微软雅黑';">
+  <!-- 先引入 Vue -->
+  <script src="./Scripts/vue.js"></script>
+  <!-- 引入组件库 -->
+  <script src="https://unpkg.com/mint-ui/lib/index.js"></script>
+
+  <div id="mydiv">
+    <!-- 提醒栏 -->
+    <div style = "padding: 15px 10px 15px 10px;">
+        <i class="mintui mintui-back" style=" color: #2289d3;"></i>
+         <span  style="color: #111;"><strong>生活缴费</strong></span>
+    </div>
+    <div style="border-bottom: 1px solid rgb(220, 220, 220);"> </div>
+    <div style = "padding: 15px 10px 15px 10px;">
+       <img src="ele.png"  width="30" style="vertical-align: middle;" /> 
+       <span  style="color: #111;text-align: center;margin-left: 10px;">电费</span>
+    </div>
+    <div style="padding: 1px 10px 1px 10px; border-bottom: 1px solid rgb(220, 220, 220);"> </div>
+    <div style = "padding: 15px 10px 15px 10px;color:#c3c3c3">
+       <div style="padding-bottom: 10px;">
+         <span>缴费单位</span> <span style="float:right;margin-right: 10px;">东莞供电局</span>
+       </div>
+
+        <div style="padding-bottom: 10px;">
+            <span>缴费户号</span> <span style="float:right;margin-right: 10px;">0319006110102520</span>
+        </div>
+
+        <div style="padding-bottom: 10px;">
+         <span>户名</span> <span style="float:right;margin-right: 10px;">莞市简竹电子商务有限公司</span>
+       </div>
+
+        <div style="padding-bottom: 10px;">
+            <span>住址信息</span> <span style="float:right;margin-right: 10px;">广东省东莞市莞城******路20号</span>
+        </div>
+
+        <div style="padding-bottom: 10px;">
+         <span>当前可用余额</span> <span style="float:right;margin-right: 10px;">0.00</span>
+       </div>
+
+        <div style="padding-bottom: 10px;">
+            <span>当前欠费金额</span> <span style="float:right;margin-right: 10px;">0.00</span>
+        </div>
+
+        <div style="padding-bottom: 10px;">
+            <span style="vertical-align:middle">自动缴费</span>  
+             <span style="color:#168de9;vertical-align:middle; vertical-align: middle;
+    float: right;
+    margin-right: 15px;
+    padding: 5px 20px 5px 20px;border: 1px solid #168de9;cursor: pointer;">去开通</span> 
+        </div>       
+    </div>
+
+
+    <div style = "padding: 15px 10px 15px 10px;">
+
+      <mt-field label="充值金额"  placeholder="请输入充值金额"  ></mt-field>
+    
+    </div>
+    <div style="border-bottom: 1px solid rgb(220, 220, 220);"> </div>
+
+
+      <div>
+        <mt-button size="large" class="mybutton" @click.native="login"  style="cursor: pointer;">立即缴费</mt-button>
+        <mt-button size="large"  type="primary" class="mybutton" @click.native="changeLoginMethod" style="cursor: pointer;">找人代缴</mt-button>
+      </div>
+    </div>
+
+
+    <div class="div_foot" style="color:#168de9;">
+        <span style="cursor: pointer;padding-right: 5px;">缴费记录</span>
+         <span style="padding: 0 5px 0 5px;cursor: pointer;    border-left: 1px solid rgb(220, 220, 220);
+    border-right: 1px solid rgb(220, 220, 220);">使用帮助</span>
+          <span style="cursor: pointer;padding-left: 5px;">开通自动缴费</span>
+    </div>
+
+<!--  <img src="ui.jpg" alt="" width=100% class="logo">-->
+  <script src="./Scripts/core.js"></script>
+</body>
+</html>
